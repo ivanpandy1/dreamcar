@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夢の車</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>     
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        h1, h2, p {
+            color: #ffffff;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        #section1 {
+            background-image: url('./supramerah.jpg');
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: overlay;
+        }
+
+        #section3 {
+            background-image: url('./fastandfurios.jpg');
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: overlay;
+        }
+        #section5 {
+            background-image: url('./suprabiru.jpg');
+            background-color: rgba(0, 0, 0, 0.5);
+            background-blend-mode: overlay;
+        }
+
+        .static {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .content {
+            z-index: 1;
+            position: relative;
+            padding: 20px;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+
+        .content h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #ffdd57;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff7f50;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        nav {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        nav .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #ff7f50;
+            transform: scale(1.1);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger:focus {
+            outline: none;
+        }
+
+        .hamburger div {
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 70px;
+                right: 0;
+                height: calc(100% - 70px);
+                width: 200px;
+                background-color: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+                padding-top: 20px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            nav ul.active {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 3rem;
+            }
+
+            .content h2 {
+                font-size: 2rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            nav ul li a {
+                padding: 10px;
+                border-radius: 10px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    <style>
+        ul {
+            list-style-type: disc; 
+            padding-left: 20px; 
+            text-align: left;
+        }
+        li {
+            color: white; 
+        }
+    
+        ul li::marker {
+            color: white; 
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-container">
+        
+            <button class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+        
+            <ul id="nav-menu">
+                <li><a href="#section1">ホーム</a></li>
+                <li><a href="#section2">選んだ理由</a></li>
+                <li><a href="#section3">使用目的</a></li>
+                <li><a href="#section4">車の仕様</a></li>
+                <li><a href="#section5">好きな色</a></li>
+                <li><a href="#section6">車の改造</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1: Home -->
+    <section class="parallax" id="section1">
+        <div class="content">
+            <h1>夢の車</h1>
+            <p>トヨタ スープラ</p>
+        </div>
+    </section>
+
+    <!-- Section 2: 選んだ理由 -->
+    <section class="static" id="section2">
+        <div class="content">
+            <h2>選んだ理由</h2>  
+            <ul>      
+                <li>デザイン</li>
+                <li>エンジン性能</li>           
+                <li>歴史的遺産</li>           
+                <li>ポップカルチャーでの人気</li> 
+            </ul>          
+        </div>
+    </section>
+
+    <!-- Section 3: 使用目的 -->
+    <section class="parallax" id="section3">
+        <div class="content">
+            <h2>使用目的</h2>
+            <ul>      
+                <li>ロードトリップ</li>
+                <li>投資</li>    
+            </ul>  
+        </div>
+    </section>
+
+    <!-- Section 4: 車の仕様 -->
+    <section class="static" id="section4">
+        <div class="content">
+            <h2>車の仕様</h2>
+            <ul>      
+                <li>エンジン</li>
+                <li>馬力</li> 
+                <li>トランスミッション</li>   
+                <li>最高速度</li>   
+                <li>加速性能</li>   
+                <li>安全機能</li>   
+            </ul> 
+        </div>
+    </section>
+
+    <!-- Section 5: 好きな色 -->
+    <section class="parallax" id="section5">
+        <div class="content">
+            <h2>好きな色</h2>
+            <ul>      
+                <li>赤い</li>
+                <li>白い</li> 
+                <li>黒い</li>   
+                <li>カスタムカラー</li>  
+            </ul> 
+        </div>
+    </section>
+
+    <!-- Section 6: 車の改造 -->
+    <section class="static" id="section6">
+        <div class="content">
+            <h2>車の改造</h2>
+            <ul>      
+                <li>エクステリア</li>
+                <li>インテリア</li> 
+                <li>エンジン</li>   
+                <li>サスペンションとハンドリング</li>    
+            </ul> 
+        </div>
+    </section>
+
+    <script>
+        
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        const navLinks = document.querySelectorAll('#nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
